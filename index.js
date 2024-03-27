@@ -86,7 +86,13 @@ app.delete("/delete/:id",async(req,res)=>{
 })
 
 //Database connection
-mongoose.connect("mongodb://127.0.0.1:27017/curdoperation")
+const dburl="mongodb+srv://vasanthdb:vasanth@cluster0.vgexajy.mongodb.net/crudoperation?retryWrites=true&w=majority&appName=Cluster0"
+const connectionParams={
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+}
+//mongoose.connect("mongodb://127.0.0.1:27017/curdoperation")
+mongoose.connect(dburl)
 .then(()=>{
     console.log("connected to DB")
     app.listen(PORT,()=>console.log("server is started"))
